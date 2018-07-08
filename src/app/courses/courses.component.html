@@ -1,0 +1,9 @@
+<div class="courses">
+  <app-toolbox></app-toolbox>
+  <app-courses-list></app-courses-list>
+  <mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="pageEvent = $event">
+  </mat-paginator>
+</div>
