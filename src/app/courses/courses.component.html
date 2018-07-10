@@ -1,6 +1,6 @@
 <div class="courses">
-  <app-toolbox></app-toolbox>
-  <app-courses-list></app-courses-list>
+  <app-toolbox (search)="search($event)"></app-toolbox>
+  <app-courses-list [courses]="foundCourses"></app-courses-list>
   <mat-paginator [length]="length"
               [pageSize]="pageSize"
               [pageSizeOptions]="pageSizeOptions"
