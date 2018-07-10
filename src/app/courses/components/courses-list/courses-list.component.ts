@@ -8,6 +8,7 @@ import { Course } from '../../../courses/models/course.model';
 })
 export class CoursesListComponent implements OnInit {
   @Input() courses: Array<Course>;
+  public coursesArrayEmptyMsg = 'NO DATA, PLEASE CLICK ADD COURSE TO INSERT NEW CORSE';
 
   constructor() { }
 

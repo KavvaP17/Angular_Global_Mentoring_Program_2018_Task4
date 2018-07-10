@@ -2,5 +2,5 @@
   <app-course [course]="course" (deleteCourse)="deleteCourse($event)"></app-course>
 </div>
 <div *ngIf="courses.length === 0">
-  <p>NO DATA, PLEASE CLICK ADD COURSE TO INSERT NEW CORSE</p>
+  <p>{{coursesArrayEmptyMsg | uppercase}}</p>
 </div>

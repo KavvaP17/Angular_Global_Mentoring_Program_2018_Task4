@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 import { CoursesComponent } from './courses.component';
+import { SearchPipe } from './pipes/search/search.pipe';
 
 describe('CoursesComponent', () => {
   let component: CoursesComponent;
@@ -10,6 +11,7 @@ describe('CoursesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ CoursesComponent ],
+      providers: [ SearchPipe ],
       schemas: [NO_ERRORS_SCHEMA],
     })
     .compileComponents();
@@ -23,5 +25,9 @@ describe('CoursesComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should load courses array', () => {
+    expect(component.courses.length > 0).toBe(true);
   });
 });

@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { CoursesListComponent } from './courses-list.component';
+import { OrderByDatePipe } from '../../pipes/orderByDate/order-by-date.pipe';
 
 describe('CoursesListComponent', () => {
   let component: CoursesListComponent;
@@ -9,8 +10,8 @@ describe('CoursesListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CoursesListComponent ],
-      schemas: [NO_ERRORS_SCHEMA],
+      declarations: [ CoursesListComponent, OrderByDatePipe ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
@@ -18,14 +19,11 @@ describe('CoursesListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CoursesListComponent);
     component = fixture.componentInstance;
+    component.courses = [];
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should load courses array', () => {
-    expect(component.courses.length > 0).toBe(true);
   });
 });
