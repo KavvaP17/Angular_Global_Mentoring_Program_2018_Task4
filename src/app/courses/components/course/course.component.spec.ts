@@ -12,7 +12,8 @@ import { Component } from '@angular/core';
   template: `<app-course [course]="course" (deleteCourse)="deleteCourse($event)"></app-course>`
 })
 class CourseHostComponent {
-  public course: Course = new Course(1, 'course#1', Date.now(), 100, `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`);
+  public course: Course = new Course(1, 'course#1', Date.now(), 100,
+                                    `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`, true);
   public deletedCourseId: number;
   public deleteCourse(id): void {
     this.deletedCourseId = id;
@@ -23,7 +24,8 @@ class CourseHostComponent {
 describe('CourseComponent: Stand Alone testing', () => {
   let component: CourseComponent;
   let fixture: ComponentFixture<CourseComponent>;
-  let course: Course = new Course(1, 'course#1', Date.now(), 100, `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`);
+  const course: Course = new Course(1, 'course#1', Date.now(), 100,
+                                  `Lorem Ipsum is simply dummy text of the printing and typesetting industry.`, true);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -43,24 +45,24 @@ describe('CourseComponent: Stand Alone testing', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should display corect course title', ()=> {
-    let courseTitleEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-title')).nativeElement;
+  it('should display corect course title', () => {
+    const courseTitleEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-title')).nativeElement;
     expect(courseTitleEl.textContent).toBe(course.title);
   });
-  it('should display corect course creation date', ()=> {
-    let courseCreationEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-creation')).nativeElement;
+  it('should display corect course creation date', () => {
+    const courseCreationEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-creation')).nativeElement;
     expect(courseCreationEl.textContent).toBeTruthy();
   });
-  it('should display corect course duration', ()=> {
-    let courseDurationEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-duration')).nativeElement;
+  it('should display corect course duration', () => {
+    const courseDurationEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-duration')).nativeElement;
     expect(courseDurationEl.textContent).toBe(course.duration.toString());
   });
-  it('should display corect course description', ()=> {
-    let courseDescriptionEl: HTMLElement = fixture.debugElement.query(By.css('.course-description')).nativeElement;
+  it('should display corect course description', () => {
+    const courseDescriptionEl: HTMLElement = fixture.debugElement.query(By.css('.course-description')).nativeElement;
     expect(courseDescriptionEl.textContent).toBe(course.description.toString());
   });
   it('should raise delete event when clicked', () => {
-    let deleteBtnDE = fixture.debugElement.query(By.css('.course-panel-btn-delete'));
+    const deleteBtnDE = fixture.debugElement.query(By.css('.course-panel-btn-delete'));
     let deletedCourseId: number;
     component.deleteCourse.subscribe((courseId: number) => deletedCourseId = courseId);
     deleteBtnDE.nativeElement.click();
@@ -91,24 +93,24 @@ describe('CourseComponent: Host testing', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should display corect course title', ()=> {
-    let courseTitleEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-title')).nativeElement;
+  it('should display corect course title', () => {
+    const courseTitleEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-title')).nativeElement;
     expect(courseTitleEl.textContent).toBe(component.course.title);
   });
-  it('should display corect course creation date', ()=> {
-    let courseCreationEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-creation')).nativeElement;
+  it('should display corect course creation date', () => {
+    const courseCreationEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-creation')).nativeElement;
     expect(courseCreationEl.textContent).toBeTruthy();
   });
-  it('should display corect course duration', ()=> {
-    let courseDurationEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-duration')).nativeElement;
+  it('should display corect course duration', () => {
+    const courseDurationEl: HTMLElement = fixture.debugElement.query(By.css('.course-panel-duration')).nativeElement;
     expect(courseDurationEl.textContent).toBe(component.course.duration.toString());
   });
-  it('should display corect course description', ()=> {
-    let courseDescriptionEl: HTMLElement = fixture.debugElement.query(By.css('.course-description')).nativeElement;
+  it('should display corect course description', () => {
+    const courseDescriptionEl: HTMLElement = fixture.debugElement.query(By.css('.course-description')).nativeElement;
     expect(courseDescriptionEl.textContent).toBe(component.course .description.toString());
   });
   it('should raise delete event when clicked', () => {
-    let deleteBtnDE = fixture.debugElement.query(By.css('.course-panel-btn-delete'));
+    const deleteBtnDE = fixture.debugElement.query(By.css('.course-panel-btn-delete'));
     deleteBtnDE.nativeElement.click();
     expect(component.deletedCourseId).toBe(component.course.id);
   });

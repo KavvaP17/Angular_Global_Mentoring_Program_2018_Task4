@@ -3,9 +3,9 @@ import { Directive, Renderer2, ElementRef, OnInit, Input } from '@angular/core';
 @Directive({
   selector: '[appCourseBorder]'
 })
-export class CourseBorderDirective implements OnInit{
+export class CourseBorderDirective implements OnInit {
 
-  @Input("appCourseBorder") creationDate: number;
+  @Input('appCourseBorder') creationDate: number;
 
   constructor(private renderer: Renderer2, private el: ElementRef) { }
 
